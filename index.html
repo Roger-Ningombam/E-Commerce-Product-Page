@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Product Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">MyBrand</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#"><i class="fas fa-user"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="product-container">
+        <section class="product-gallery">
+            <div class="main-image">
+                <img src="https://m.media-amazon.com/images/I/81pybH09vyL._SL1500_.jpg" alt="Main Product Image" id="mainProductImage">
+            </div>
+            <div class="thumbnail-images">
+                <img src="https://m.media-amazon.com/images/I/81pybH09vyL._SL1500_.jpg" alt="Thumbnail 1" class="thumbnail active">
+                <img src="https://m.media-amazon.com/images/I/81AYUshuoiL._SL1500_.jpg" alt="Thumbnail 2" class="thumbnail">
+                <img src="https://m.media-amazon.com/images/I/71v9DiKXiTL._SL1500_.jpg" alt="Thumbnail 3" class="thumbnail">
+                <img src="https://m.media-amazon.com/images/I/81shi9oqcBL._SL1500_.jpg" alt="Thumbnail 4" class="thumbnail">
+            </div>
+        </section>
+
+        <section class="product-details">
+            <h1 class="product-title">Premium Wireless Headphones</h1>
+            <div class="product-rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+                <span>(4.5 Stars - 120 Reviews)</span>
+            </div>
+            <p class="product-price">$199.99</p>
+
+            <div class="product-description">
+                <h3>Product Description</h3>
+                <p>Immerse yourself in unparalleled sound quality with our Premium Wireless Headphones. Featuring advanced noise-cancellation technology, comfortable over-ear design, and up to 30 hours of battery life. Perfect for music lovers and professionals alike.</p>
+                <ul>
+                    <li>Bluetooth 5.2 for stable connection</li>
+                    <li>Active Noise Cancellation</li>
+                    <li>Ergonomic design for all-day comfort</li>
+                    <li>Built-in microphone for crystal clear calls</li>
+                </ul>
+            </div>
+
+            <div class="product-options">
+                <div class="option-group">
+                    <label for="color-select">Color:</label>
+                    <select id="color-select">
+                        <option value="black">Black</option>
+                        <option value="silver">Silver</option>
+                        <option value="rose-gold">Rose Gold</option>
+                    </select>
+                </div>
+
+                <div class="option-group quantity-selector">
+                    <label for="quantity">Quantity:</label>
+                    <div class="quantity-input">
+                        <button id="decrement-btn">-</button>
+                        <input type="number" id="quantity" value="1" min="1">
+                        <button id="increment-btn">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-actions">
+                <button class="add-to-cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button class="buy-now-btn"><i class="fas fa-money-bill-alt"></i> Buy Now</button>
+            </div>
+        </section>
+    </main>
+
+    <section class="related-products">
+        <h2>You Might Also Like</h2>
+        <div class="related-products-grid">
+            <div class="related-product-card">
+                <img src="https://m.media-amazon.com/images/I/71dzT17JxZL._SL1500_.jpg" alt="Related Product 1">
+                <h3>Charging Dock</h3>
+                <p>$29.99</p>
+                <button>View Product</button>
+            </div>
+            <div class="related-product-card">
+                <img src="https://m.media-amazon.com/images/I/71hYqcHJk3L._SL1500_.jpg" alt="Related Product 2">
+                <h3>Protective Case</h3>
+                <p>$15.99</p>
+                <button>View Product</button>
+            </div>
+            <div class="related-product-card">
+                <img src="https://m.media-amazon.com/images/I/7193ASMkibL._SL1500_.jpg" alt="Related Product 3">
+                <h3>Audio Cable</h3>
+                <p>$9.99</p>
+                <button>View Product</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MyBrand. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
