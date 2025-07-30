@@ -2,12 +2,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --accent-color: #28a745;
-    --background-light: #f8f9fa;
-    --background-dark: #343a40;
-    --text-color: #333;
+    --primary-color: #007bff; /* Blue */
+    --secondary-color: #6c757d; /* Grey */
+    --accent-color: #28a745; /* Green */
+    --background-light: #F0EBE3; /* Greek Villa - for product box and related cards */
+    --background-dark: #F7F7F7; /* Titan White - for body background */
+    --text-color: #333; /* Dark text for light backgrounds */
     --light-grey: #e9ecef;
     --border-color: #dee2e6;
     --star-color: #ffc107;
@@ -23,7 +23,7 @@ body {
     font-family: 'Poppins', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background-color: var(--background-light);
+    background-color: var(--background-dark);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -82,7 +82,7 @@ body {
     max-width: 1200px;
     margin: 3rem auto;
     padding: 1.5rem;
-    background-color: #fff;
+    background-color: var(--background-light);
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
@@ -102,11 +102,17 @@ body {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
+    position: relative;
+    padding-top: 100%; /* Creates a 1:1 aspect ratio */
 }
 
 .main-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain; /* Ensures image fits without distortion */
     display: block;
     transition: transform 0.3s ease;
 }
@@ -175,7 +181,18 @@ body {
     font-size: 2rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+}
+
+.original-price {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+    text-decoration: line-through;
+    font-weight: 400;
 }
 
 .product-description {
@@ -231,6 +248,7 @@ select {
     background-repeat: no-repeat;
     background-position: right 0.7em center;
     background-size: 1em;
+    color: var(--text-color);
 }
 
 select:focus {
@@ -254,6 +272,7 @@ select:focus {
     font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    color: var(--text-color);
 }
 
 .quantity-input button:hover {
@@ -269,6 +288,7 @@ select:focus {
     padding: 0.7rem 0.5rem;
     appearance: textfield;
     -moz-appearance: textfield;
+    color: var(--text-color);
 }
 
 .quantity-input input::-webkit-outer-spin-button,
@@ -288,7 +308,8 @@ select:focus {
     flex-wrap: wrap;
 }
 
-.product-actions button {
+.product-actions button,
+.product-actions .buy-now-btn-link {
     flex: 1 1 auto;
     padding: 1rem 1.5rem;
     font-size: 1.1rem;
@@ -301,11 +322,12 @@ select:focus {
     align-items: center;
     justify-content: center;
     gap: 0.7rem;
+    text-decoration: none;
+    color: #fff;
 }
 
 .add-to-cart-btn {
     background-color: var(--accent-color);
-    color: #fff;
 }
 
 .add-to-cart-btn:hover {
@@ -313,12 +335,26 @@ select:focus {
     transform: translateY(-3px);
 }
 
-.buy-now-btn {
+.buy-now-btn-link {
     background-color: var(--primary-color);
-    color: #fff;
 }
 
-.buy-now-btn:hover {
+.buy-now-btn-link .buy-now-btn {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    cursor: inherit;
+    transition: none;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+}
+
+.buy-now-btn-link:hover {
     background-color: #0056b3;
     transform: translateY(-3px);
 }
@@ -329,6 +365,7 @@ select:focus {
     margin: 4rem auto;
     padding: 0 1.5rem;
     text-align: center;
+    color: var(--text-color);
 }
 
 .related-products h2 {
@@ -344,13 +381,25 @@ select:focus {
     justify-content: center;
 }
 
+/* Forces 3 columns on larger screens and centers the grid */
+@media (min-width: 992px) {
+    .related-products-grid {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 .related-product-card {
-    background-color: #fff;
+    background-color: var(--background-light);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     padding: 1.5rem;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Flex container */
+    flex-direction: column; /* Stack items vertically */
 }
 
 .related-product-card:hover {
@@ -362,12 +411,21 @@ select:focus {
     max-width: 100%;
     height: auto;
     border-radius: 5px;
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Add some space below the image */
+}
+
+/* New style for the wrapper around name, price, and button */
+.related-product-card .card-details {
+    display: flex; /* Make card-details a flex container */
+    flex-direction: column; /* Stack its children vertically */
+    flex-grow: 1; /* Allow this div to grow and take available space */
+    justify-content: flex-end; /* Push content to the bottom of this flex container */
+    /* Remove padding or margins that might interfere with alignment if any were on h3, p previously */
 }
 
 .related-product-card h3 {
     font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5rem; /* Maintain small gap between name and price */
     color: var(--text-color);
 }
 
@@ -375,7 +433,7 @@ select:focus {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; /* Maintain small gap between price and button */
 }
 
 .related-product-card button {
@@ -387,6 +445,7 @@ select:focus {
     cursor: pointer;
     font-size: 0.95rem;
     transition: background-color 0.3s ease;
+    /* margin-top: auto; - REMOVED, now handled by .card-details */
 }
 
 .related-product-card button:hover {
@@ -395,11 +454,12 @@ select:focus {
 
 /* Footer */
 footer {
-    background-color: var(--background-dark);
-    color: #fff;
+    background-color: #fff;
+    color: var(--text-color);
     text-align: center;
     padding: 1.5rem;
     margin-top: auto;
+    box-shadow: 0 -2px 4px rgba(0,0,0,0.05);
 }
 
 /* Responsive Design */
@@ -482,6 +542,11 @@ footer {
     }
 
     .product-actions button {
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+    }
+
+    .product-actions .buy-now-btn-link {
         font-size: 1rem;
         padding: 0.8rem 1rem;
     }
